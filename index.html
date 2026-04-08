@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intan Amanda | Frontend Engineer Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              baliGold: "#C9A227",
+              baliRed: "#8B1E1E",
+            },
+          },
+        },
+      };
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: linear-gradient(
+            rgba(255, 255, 255, 0.75),
+            rgba(255, 255, 255, 0.96)
+          ),
+          url("assets/bg-bali.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        transition: all 0.5s ease;
+      }
+
+      .dark body {
+        background: linear-gradient(
+            rgba(15, 23, 42, 0.85),
+            rgba(15, 23, 42, 0.98)
+          ),
+          url("assets/bg-bali.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .dark .glass {
+        background: rgba(30, 41, 59, 0.7);
+      }
+
+      .bali-gradient-text {
+        background: linear-gradient(135deg, #c9a227, #8b1e1e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @keyframes pulse-soft {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+      .dot-sep { animation: pulse-soft 2s infinite; }
+
+      body {
+        cursor: url("assets/bunga-kamboja-cursor.png"), auto;
+      }
+
+      a, button {
+        cursor: url("assets/bunga-kamboja-hover.png"), pointer;
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800 dark:text-slate-200 selection:bg-baliGold/30 transition-colors duration-500">
+    
+    <audio id="bg-music" loop>
+      <source src="assets/bali-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl glass border border-slate-200 dark:border-white/10 rounded-full shadow-sm">
+      <div class="px-6 py-4 flex justify-between items-center w-full">
+        <div class="font-black text-xl tracking-tighter bali-gradient-text">AMANDA.</div>
+
+        <div class="hidden md:flex gap-8 items-center text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+          <a href="#about" class="hover:text-baliGold dark:hover:text-white transition-colors">About</a>
+          <a href="#skills" class="hover:text-baliGold dark:hover:text-white transition-colors">Skills</a>
+          <a href="#experience" class="hover:text-baliGold dark:hover:text-white transition-colors">Experience</a>
+          <a href="#contact" class="text-baliRed dark:text-baliGold hover:opacity-70 transition-colors">Contact</a>
+        </div>
+
+        <div class="flex gap-3 items-center">
+          <button id="music-toggle" class="relative p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 hover:scale-110 transition-all focus:outline-none group">
+            <svg id="music-off-icon" class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+            </svg>
+            <svg id="music-on-icon" class="hidden w-5 h-5 text-baliGold animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+          </button>
+
+          <button id="theme-toggle" class="relative p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 hover:scale-110 transition-all focus:outline-none group">
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-amber-500 group-hover:rotate-45 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-baliRed dark:text-baliGold group-hover:-rotate-12 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+
+          <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10">
+            <svg id="burger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="absolute top-[110%] left-0 w-full glass border border-slate-200 dark:border-white/10 rounded-3xl p-6 flex flex-col items-center gap-6 shadow-xl transition-all duration-300 opacity-0 pointer-events-none -translate-y-4 md:hidden">
+        <a href="#about" class="mobile-link text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:text-baliGold transition-colors">About</a>
+        <a href="#skills" class="mobile-link text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:text-baliGold transition-colors">Skills</a>
+        <a href="#experience" class="mobile-link text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:text-baliGold transition-colors">Experience</a>
+        <a href="#contact" class="mobile-link text-xs font-black uppercase tracking-widest text-baliRed dark:text-baliGold transition-colors">Contact</a>
+      </div>
+    </nav>
+
+    <section id="about" class="relative min-h-screen flex flex-col justify-center pt-40 md:pt-32 pb-20 px-6">
+      <div class="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div class="relative group order-first md:order-last shrink-0">
+          <div class="absolute -inset-1 bg-gradient-to-r from-baliGold to-baliRed rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+          <div class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-white dark:border-slate-900 shadow-2xl">
+            <img src="assets/profile.png" alt="Profile" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <div class="flex-1 text-center md:text-left mt-6 md:mt-0">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-baliGold/10 border border-baliGold/20 text-baliRed dark:text-baliGold text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+            <span class="w-2 h-2 rounded-full bg-baliGold animate-pulse"></span>
+            Available for Internship
+          </div>
+          <h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-6 text-slate-900 dark:text-white">
+            Frontend <br />
+            <span class="bali-gradient-text">Developer.</span>
+          </h1>
+          <div class="flex flex-wrap justify-center md:justify-start items-center gap-3 text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-slate-600 dark:text-slate-500 mb-6 md:mb-8">
+            <span>HTML</span> <span class="dot-sep text-baliGold">•</span>
+            <span>CSS</span> <span class="dot-sep text-baliGold">•</span>
+            <span>JS</span> <span class="dot-sep text-baliGold">•</span>
+            <span>Vue.js</span> <span class="dot-sep text-baliGold">•</span>
+            <span>Tailwind</span> <span class="dot-sep text-baliGold">•</span>
+            <span>WordPress</span>
+          </div>
+          <p class="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-8 md:mb-12 mx-auto md:mx-0">
+            Hello, I'm Ni Kadek Intan Amanda Putri, an Information Systems student at STIKOM Bali. Interested in Frontend and WordPress development.
+          </p>
+          <a href="#experience" class="px-8 py-4 bg-baliGold text-white font-bold rounded-2xl hover:opacity-90 transition-all shadow-xl shadow-baliGold/20 text-[10px] sm:text-xs tracking-widest uppercase flex items-center justify-center w-fit mx-auto md:mx-0">
+            View Projects
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-32 px-6">
+      <div class="max-w-5xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-black mb-16 uppercase tracking-tighter text-slate-900 dark:text-slate-200">
+          Tech <span class="text-baliGold">Stack.</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-10 glass border border-slate-200 dark:border-white/5 rounded-[2.5rem] hover:border-baliGold transition-all duration-500 group shadow-sm">
+            <h3 class="text-xs font-black mb-10 text-baliRed dark:text-baliGold uppercase tracking-[0.3em]">Frontend</h3>
+            <div class="flex flex-wrap justify-center gap-6 group-hover:scale-110 transition-transform duration-500">
+                <img src="https://skillicons.dev/icons?i=html" class="h-11 w-11" alt="HTML" />
+                <img src="https://skillicons.dev/icons?i=css" class="h-11 w-11" alt="CSS" />
+                <img src="https://skillicons.dev/icons?i=js" class="h-11 w-11" alt="JS" />
+                <img src="https://skillicons.dev/icons?i=vue" class="h-11 w-11" alt="Vue" />
+                <img src="https://skillicons.dev/icons?i=tailwind" class="h-11 w-11" alt="Tailwind" />
+            </div>
+          </div>
+          <div class="p-10 glass border border-slate-200 dark:border-white/5 rounded-[2.5rem] hover:border-baliRed transition-all duration-500 group shadow-sm">
+            <h3 class="text-xs font-black mb-10 text-baliRed dark:text-baliGold uppercase tracking-[0.3em]">Backend & Tools</h3>
+            <div class="flex flex-wrap justify-center gap-6 group-hover:scale-110 transition-transform duration-500">
+                <img src="https://skillicons.dev/icons?i=php" class="h-11 w-11" alt="PHP" />
+                <img src="https://skillicons.dev/icons?i=mysql" class="h-11 w-11" alt="MySQL" />
+                <img src="https://skillicons.dev/icons?i=git" class="h-11 w-11" alt="Git" />
+                <img src="https://skillicons.dev/icons?i=github" class="h-11 w-11" alt="GitHub" />
+            </div>
+          </div>
+          <div class="p-10 glass border border-slate-200 dark:border-white/5 rounded-[2.5rem] hover:border-baliGold transition-all duration-500 group shadow-sm">
+            <h3 class="text-xs font-black mb-10 text-baliRed dark:text-baliGold uppercase tracking-[0.3em]">Design & CMS</h3>
+            <div class="flex flex-wrap justify-center gap-6 group-hover:scale-110 transition-transform duration-500">
+                <img src="https://skillicons.dev/icons?i=figma" class="h-11 w-11" alt="Figma" />
+                <img src="https://skillicons.dev/icons?i=wordpress" class="h-11 w-11" alt="WordPress" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="py-32 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-6">
+          <div class="max-w-xl text-center md:text-left">
+            <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-tight text-slate-900 dark:text-slate-200">
+              Featured <br /><span class="text-baliRed dark:text-baliGold underline decoration-baliGold/30 underline-offset-8">Projects.</span>
+            </h2>
+          </div>
+          <p class="text-slate-500 dark:text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] max-w-xs text-center md:text-right md:border-r-2 border-baliGold md:pr-4 mt-2 md:mt-0">
+            A showcase of projects built through freelance work, academic experience, and self-driven learning.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div class="group flex flex-col glass border border-slate-200 dark:border-white/5 rounded-[3rem] overflow-hidden hover:border-baliGold transition-all duration-500 shadow-sm">
+            <div class="aspect-[16/10] bg-slate-100 dark:bg-slate-800 relative overflow-hidden">
+              <img src="assets/bali-traventure.png" alt="Bali Traventure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            </div>
+            <div class="p-10 flex flex-col flex-1">
+              <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+                <h3 class="text-2xl font-black tracking-tight italic text-slate-900 dark:text-slate-200">Bali Traventure</h3>
+                <span class="text-[9px] font-black py-1 px-3 bg-baliGold/10 text-baliRed dark:text-baliGold rounded-lg uppercase border border-baliGold/20">Frontend Development</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-1">Converted high-fidelity Figma designs into responsive web interfaces using Tailwind CSS.</p>
+              <div class="pt-6 border-t border-slate-200 dark:border-white/5 flex justify-between items-center">
+                <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest italic">Live Project</span>
+                <a href="https://balitraventure.com" target="_blank" class="px-5 py-2 bg-baliGold hover:bg-baliRed text-white text-[10px] font-black uppercase tracking-widest rounded-full transition-colors flex items-center gap-2">Live Demo</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="group flex flex-col glass border border-slate-200 dark:border-white/5 rounded-[3rem] overflow-hidden hover:border-baliGold transition-all duration-500 shadow-sm">
+            <div class="aspect-[16/10] bg-slate-100 dark:bg-slate-900 relative overflow-hidden flex items-center justify-center p-4">
+              <img src="assets/widi-dashboard.png" alt="UD. Widi" class="relative w-full h-full object-contain p-2 scale-95 group-hover:scale-105 transition-transform duration-700" />
+            </div>
+            <div class="p-10 flex flex-col flex-1">
+                <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+                    <h3 class="text-2xl font-black tracking-tight italic text-slate-900 dark:text-slate-200">UD. Widi</h3>
+                    <span class="text-[9px] font-black py-1 px-3 bg-baliGold/10 text-baliRed dark:text-baliGold rounded-lg uppercase border border-baliGold/20">Frontend Development</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-1">Developed a responsive web-based management system using Vue.js and Tailwind CSS.</p>
+                <div class="pt-6 border-t border-slate-200 dark:border-white/5"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-32 px-6 relative overflow-hidden text-center">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-baliGold/5 dark:bg-baliGold/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-baliRed dark:text-baliGold mb-4">Get In Touch</h2>
+      <h3 class="text-4xl md:text-6xl font-black tracking-tighter leading-tight mb-12 text-slate-900 dark:text-slate-200">Let's work <span class="bali-gradient-text italic">together.</span></h3>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <a href="mailto:tanamandaa14@gmail.com" class="p-8 glass border border-slate-200 dark:border-white/5 rounded-3xl hover:border-baliRed transition-all flex flex-col items-center">
+          <p class="text-sm font-black text-slate-500 uppercase">Email</p>
+          <p class="text-base font-bold text-slate-700 dark:text-slate-200 break-all">tanamandaa14@gmail.com</p>
+        </a>
+        <a href="https://wa.me/6289650917081" target="_blank" class="p-8 glass border border-slate-200 dark:border-white/5 rounded-3xl hover:border-baliGold transition-all flex flex-col items-center">
+            <p class="text-sm font-black text-slate-500 uppercase">WhatsApp</p>
+            <p class="text-base font-bold text-slate-700 dark:text-slate-200">+6289650917081</p>
+        </a>
+        <a href="https://linkedin.com/in/intan-amanda" target="_blank" class="p-8 glass border border-slate-200 dark:border-white/5 rounded-3xl hover:border-blue-500 transition-all flex flex-col items-center">
+            <p class="text-sm font-black text-slate-500 uppercase">LinkedIn</p>
+            <p class="text-base font-bold text-slate-700 dark:text-slate-200">intan-amanda</p>
+        </a>
+      </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-200 dark:border-white/5 text-center">
+      <p class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500 mb-2">&copy; 2026 Ni Kadek Intan Amanda Putri</p>
+      <p class="text-[10px] text-slate-400 uppercase tracking-widest">Denpasar, Bali • STIKOM Bali</p>
+    </footer>
+
+    <script>
+      // Theme Logic
+      const htmlClasses = document.documentElement.classList;
+      const themeToggleBtn = document.getElementById("theme-toggle");
+      const lightIcon = document.getElementById("theme-toggle-light-icon");
+      const darkIcon = document.getElementById("theme-toggle-dark-icon");
+
+      function updateIcons() {
+        if (htmlClasses.contains("dark")) {
+          lightIcon.classList.remove("hidden");
+          darkIcon.classList.add("hidden");
+        } else {
+          lightIcon.classList.add("hidden");
+          darkIcon.classList.remove("hidden");
+        }
+      }
+
+      if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        htmlClasses.add("dark");
+      } else {
+        htmlClasses.remove("dark");
+      }
+      updateIcons();
+
+      themeToggleBtn.addEventListener("click", () => {
+        htmlClasses.toggle("dark");
+        localStorage.theme = htmlClasses.contains("dark") ? "dark" : "light";
+        updateIcons();
+      });
+
+      // Music Logic
+      const music = document.getElementById("bg-music");
+      const musicBtn = document.getElementById("music-toggle");
+      const musicOnIcon = document.getElementById("music-on-icon");
+      const musicOffIcon = document.getElementById("music-off-icon");
+
+      music.volume = 0.3; // Volume 30%
+
+      musicBtn.addEventListener("click", () => {
+        if (music.paused) {
+          music.play();
+          musicOnIcon.classList.remove("hidden");
+          musicOffIcon.classList.add("hidden");
+        } else {
+          music.pause();
+          musicOnIcon.classList.add("hidden");
+          musicOffIcon.classList.remove("hidden");
+        }
+      });
+
+      // Mobile Menu Logic
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const burgerIcon = document.getElementById("burger-icon");
+      const closeIcon = document.getElementById("close-icon");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle("opacity-0");
+        mobileMenu.classList.toggle("pointer-events-none");
+        mobileMenu.classList.toggle("-translate-y-4");
+        burgerIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
+      }
+
+      mobileMenuBtn.addEventListener("click", toggleMobileMenu);
+      mobileLinks.forEach((link) => link.addEventListener("click", toggleMobileMenu));
+    </script>
+  </body>
+</html>
